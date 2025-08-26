@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tech & Home - Tu tienda de tecnología, cocina y mascotas</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <style>
+    /* Reset y variables */
+    :root {
+      --primary: #4a6de5;
+      --secondary: #f8f9fa;
+      --dark: #212529;
+      --light: #ffffff;
+      --accent: #ff6b6b;
+      --success: #28a745;
+      --shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: #f4f6f9;
+      color: var(--dark);
+      line-height: 1.6;
+    }
+
+    /* Encabezado */
+    header {
+      background: linear-gradient(135deg, var(--primary), #3a56c5);
+      color: white;
+      padding: 1rem 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: var(--shadow);
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .logo i {
+      margin-right: 8px;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+    }
+
+    nav ul li {
+      margin-left: 2rem;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #e0e7ff;
+    }
+
+    /* Hero Section */
+    .hero {
+      background: url('https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;
+      height: 60vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      position: relative;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1;
+    }
+
+    .hero-content {
+      z-index: 2;
+      max-width: 800px;
+      padding: 2rem;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: white;
+      padding: 0.8rem 1.5rem;
+      border: none;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s;
+      box-shadow: var(--shadow);
+    }
+
+    .btn:hover {
+      background: #3a56c5;
+      transform: translateY(-2px);
+    }
+
+    /* Secciones de productos */
+    .section-title {
+      text-align: center;
+      margin: 3rem 0 2rem;
+      font-size: 2rem;
+      color: var(--primary);
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      padding: 0 5%;
+    }
+
+    .product-card {
+      background: var(--light);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: 0.3s;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    }
+
+    .product-img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .product-info {
+      padding: 1rem;
+    }
+
+    .product-info h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .product-info p {
+      color: #666;
+      font-size: 0.9rem;
+    }
+
+    .price {
+      font-weight: 700;
+      color: var(--primary);
+      margin: 0.5rem 0;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--dark);
+      color: white;
+      text-align: center;
+      padding: 2rem 5%;
+      margin-top: 3rem;
+    }
+
+    footer p {
+      margin: 0.5rem 0;
+    }
+
+    .social-icons a {
+      color: white;
+      font-size: 1.5rem;
+      margin: 0 0.8rem;
+      transition: 0.3s;
+    }
+
+    .social-icons a:hover {
+      color: var(--primary);
+    }
+
+    /* Media Queries */
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        padding: 1rem;
+      }
+
+      nav ul {
+        margin-top: 1rem;
+      }
+
+      nav ul li {
+        margin-left: 1rem;
+        margin-right: 1rem;
+      }
+
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+
+      .hero p {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Encabezado -->
+  <header>
+    <div class="logo">
+      <i class="fas fa-store"></i> Tech & Home
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#electronica">Electrónica</a></li>
+        <li><a href="#cocina">Cocina</a></li>
+        <li><a href="#mascotas">Mascotas</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero" id="inicio">
+    <div class="hero-content">
+      <h1>Bienvenido a Tech & Home</h1>
+      <p>Encuentra los mejores productos de electrónica, cocina y accesorios para tus mascotas. Todo en un solo lugar.</p>
+      <a href="#electronica" class="btn">Ver Productos</a>
+    </div>
+  </section>
+
+  <!-- Electrónica -->
+  <h2 class="section-title" id="electronica"><i class="fas fa-microchip"></i> Electrónica</h2>
+  <div class="products">
+    <div class="product-card">
+      <img src="https://images.unsplash.com/photo-1546776312-f629940a76a7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Auriculares" class="product-img">
+      <div class="product-info">
+        <h3>Auriculares Inalámbricos</h3>
+        <p>Sonido envolvente con cancelación de ruido.</p>
+        <p class="price">$89.99</p>
+        <a href="#" class="btn">Comprar</a>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Smartwatch" class="product-img">
+      <div class="product-info">
+        <h3>Smartwatch Pro</h3>
+        <p>Monitor de salud, GPS y notificaciones.</p>
+        <p class="price">$149.99</p>
+        <a href="#" class="btn">Comprar</a>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="https://images.unsplash.com/photo-1527203561188-d1e8a8a6f44e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Cámara" class="product-img">
+      <div class="product-info">
+        <h3>Cámara 4K</h3>
+        <p>Grabación en alta resolución y estabilización.</p>
+        <p class="price">$299.99</p>
+        <a href="#" class="btn">Comprar</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cocina -->
+  <h2 class="section-title" id="cocina"><i class="fas fa-utensils"></i> Accesorios de Cocina</h2>
+  <div class="products">
+    <div class="product-card">
+      <img src="https://images.unsplash.com/photo-1583847229947-cdc84639c7f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Juego de cuchillos" class="product-img">
+      <div class="product-info">
+        <h3>Juego de Cuchillos Profesionales</h3>
+        <p>Acero inoxidable, corte preciso.</p>
+        <p class="price">$69.99</p>
+        <a href="#" class="btn">Comprar</a>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="https://images.unsplash.com/photo-1600857544208-3e8548f7c813?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Batidora" class="product-img">
+      <div class="product-info">
+        <h3>Batidora de Mano</h3>
+        <p>5 velocidades, fácil limpieza.</p>
+        <p class="price">$45.99</p>
+        <a href="#" class="btn">Comprar</a>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="https://images.unsplash.com/photo-1596492784800-6355692f1722?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Set de ollas" class="product-img">
+      <div class="product-info">
+        <h3>Set de Ollas Antiadherentes</h3>
+        <p>Juego de 5 piezas, inducción compatible.</p>
+        <p class="price">$119.99</p>
+        <a href="#" class="btn">Comprar</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mascotas -->
+  <h2 class="section-title" id="mascotas"><i class="fas fa-paw"></i> Accesorios para Mascotas</h2>
+  <div class="products">
+    <div class="product-card">
+      <img src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Collar inteligente" class="product-img">
+      <div class="product-info">
+        <h3>Collar Inteligente GPS</h3>
+        <p>Localización en tiempo real y salud.</p>
+        <p class="price">$79.99</p>
+        <a href="#" class="btn">Comprar</a>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Juguete para perro" class="product-img">
+      <div class="product-info">
+        <h3>Juguete Masticable Resistente</h3>
+        <p>Ideal para perros grandes.</p>
+        <p class="price">$19.99</p>
+        <a href="#" class="btn">Comprar</a>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="https://images.unsplash.com/photo-1571629213445-947f1760c80e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Cama para mascota" class="product-img">
+      <div class="product-info">
+        <h3>Cama Ortopédica para Mascotas</h3>
+        <p>Soporte lumbar, lavable.</p>
+        <p class="price">$89.99</p>
+        <a href="#" class="btn">Comprar</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer id="contacto">
+    <p><i class="fas fa-envelope"></i> contacto@techandhome.com</p>
+    <p><i class="fas fa-phone"></i> +52 123 456 7890</p>
+    <div class="social-icons">
+      <a href="#"><i class="fab fa-facebook"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-tiktok"></i></a>
+    </div>
+    <p>&copy; 2025 Tech & Home. Todos los derechos reservados.</p>
+  </footer>
+
+  <script>
+    // Puedes agregar funcionalidad aquí (ej. carrito, filtros, etc.)
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+  </script>
+</body>
+</html>
